@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical Component Detector</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #2c3e50;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 48px;
+            color: white;
+            margin: 0;
+            letter-spacing: -1px;
+            font-weight: 800;
+        }
+        .header p {
+            font-size: 18px;
+            color: #ecf0f1;
+            margin-top: 10px;
+        }
+        .container {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+        }
+        .card-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .form-control-file {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            box-shadow: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-control-file:focus {
+            border-color: #007bff;
+        }
+        .btn-primary {
+            background-color: #2c3e50;
+            border: none;
+            transition: background-color 0.3s ease;
+            font-size: 18px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            width: 100%;
+            letter-spacing: 1px;
+        }
+        .btn-primary:hover {
+            background-color: #1d2938;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #ced4da;
+        }
+        .footer p {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+        .modal-content {
+            background-color: #f8f9fa;
+        }
+        #predictionModal {
+            color: #343a40;
+        }
+        #annotated-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="display-4">ElecMech <span style="color: #3498db;">DetectAI</span></h1>
+        <p class="lead">Advanced AI for Electrical Component Detection</p>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h2 class="card-title text-center mb-4">Upload an Image</h2>
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="image_file">Choose an image:</label>
+                            <input type="file" class="form-control-file" id="image_file" name="image_file" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="generate-pdf-btn">Generate PDF</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for displaying annotated image and PDF download button -->
+    <div class="modal fade" id="predictionModal" tabindex="-1" role="dialog" aria-labelledby="predictionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="predictionModalLabel">Predicted Components</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="annotated-image" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <a href="/static/formatted_pdf.pdf" download class="btn btn-primary">Download PDF</a>                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#generate-pdf-btn').click(function () {
+                $('#predictionModal').modal('show');
+            });
+        });
+    </script>
+</body>
+</html>

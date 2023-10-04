@@ -24,13 +24,13 @@ Ensure you have all the necessary packages and dependencies installed. You can d
 
 ```bash
 pip install -r requirements.txt
-
+```
 ### 2. Launch the Application
 Once you have installed the required packages, you can launch the ElecMech website with the following command:
 
 ```bash
 python manage.py runserver
-
+```
 
 After running this command, you should see output indicating that the server is running, along with the local address (e.g., http://127.0.0.1:8000/). Open this address in your web browser to access the ElecMech website.
 

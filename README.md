@@ -39,4 +39,4 @@ That's it! You are now ready to use ElecMech to analyze electronic technical dra
 ## Screenshots
 ![Home_page](Screenshots/UI.png)
 ![Annotated Image](Screenshots/Result.png)
-![Resultat_pdf](Screenshots/Resultat_pdf.png)
+![Resultat_pdf](Screenshots/resultat_pdf.png)

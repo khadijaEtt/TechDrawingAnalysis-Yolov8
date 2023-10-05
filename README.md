@@ -35,3 +35,8 @@ python manage.py runserver
 After running this command, you should see output indicating that the server is running, along with the local address (e.g., http://127.0.0.1:8000/). Open this address in your web browser to access the ElecMech website.
 
 That's it! You are now ready to use ElecMech to analyze electronic technical drawings and identify components with ease.
+
+## Screenshots
+![Home_page](Screenshots/UI.png)
+![Annotated Image](Screenshots/Result.png)
+![Resultat_pdf](Screenshots/Resultat_pdf.png)

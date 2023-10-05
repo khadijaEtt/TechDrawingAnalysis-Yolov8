@@ -1,0 +1,5 @@
+ultralytics
+keras-ocr
+django
+reportlab
+tqdm --upgrade
